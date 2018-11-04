@@ -1,0 +1,60 @@
+年份代码
+#include <iostream>
+using namespace std;
+int main()
+{
+	int input;
+	cout<<"请输入一个年份"<<endl;
+	cin>>input;
+	if((input%4==0&&input%100!=0)||(input%400==0))
+	cout<<"输入的年份是闰年"<<endl;
+	else cout<<"输入的年份不是闰年"<<endl;
+	return 0;
+}
+
+
+#include<stdio.h>
+int main(){
+int num,i,j;
+for(i=0;i<4;i++,j++){
+for(j=i+1;j<i;j++)
+printf("  ");
+for(j=0;j<2*4-1-2*i;j++)
+printf("*");
+printf("\n");
+}
+for(i=0;i<4;i++,j++){
+for(j=i+1;j<4;j++)
+printf(" ");
+for(j=0;j<2*i+1;j++)
+printf("*");
+printf("\n");
+}
+}
+
+
+
+字符代码
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+	string ch;
+	int a,b,c,d,e;
+	cin>>ch;
+	for(int i=0;i<ch.length();i++){
+		if(ch[i]>=65&&ch[i]<=90)
+		a++;
+		else if(ch[i]>=97&&ch[i]<=122)
+		b++;
+		else if(ch[i]>=48&&ch[i]<=57)
+		c++;
+		else if(ch[i]==32)
+		d++;
+		else e++;
+	}
+	cout<<a<<" "<<b<<" "<<c<<" "<<d<<" "<<e;
+return 0;
+}
+
