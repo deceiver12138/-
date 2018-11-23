@@ -1,0 +1,27 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+	int input;
+	int a[5][4] = {{89,78,56},{88,99,100},{72,80,61},{60,70,75}};
+	for(int i = 0; i < 3; i++)
+		a[4][i] = (a[0][i] + a[1][i] + a[2][i] + a[3][i])/4;
+	for(int i = 0; i < 4; i++)
+		a[i][3] = (a[i][0] + a[i][1] + a[i][2])/4;
+	cout << "查询每门课程的平均成绩请输入1" << endl;
+	cout << "查询每一个学生的平均成绩请输入2" << endl;
+	cout << "打印表格请输入3" << endl;
+	cin >> input;
+	switch(input){
+		case 1:for(int i = 0; i < 3; i++) cout << a[4][i] << '\t';break;
+		case 2:for(int i = 0; i<4; i++) cout << a[i][3] << '\t';break;
+		case 3:for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 4; j++)
+						cout << a[i][j] << '\t';
+					cout << '\n';}break;
+		default : break;
+	}	
+ 	return 0;
+}
