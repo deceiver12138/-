@@ -1,0 +1,17 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	char a[100];
+	int number = 0;
+	cin.getline(a,100);
+	for(int i = 0; i < 100; i++){
+		if(a[i] == 32 && a[i + 1] != 32){
+			number++;
+		}
+	}
+	cout << number;
+ 	return 0;
+}
