@@ -1,0 +1,18 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+int main()
+{
+	char a[100];
+	int number; 
+	for(int i = 0; i < 100; i++)
+		cin >> a[i];
+	strupr(a);
+	for(int i = 0; i < 100; i++){
+	 	if(a[i] == 32 && a[i + 1] == 84 && a[i + 2] == 72 && a[i + 3] == 69 && a[i + 4] == 32)
+	 		number++;
+	} 
+	cout << number;
+ 	return 0;
+}
