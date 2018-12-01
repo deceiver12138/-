@@ -1,0 +1,35 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+struct student{
+		int num;
+		char name[20];
+		int grade;
+	};
+int main(){
+	int x;
+	cout << "请输入你将要输入的学生的人数" <<endl;
+	cin >> x;
+	student stu[x];
+	for(int i = 0; i < x; i++){
+		cout << "请依次输入第" << i+1 <<"个学生的学号，姓名，成绩" << endl;
+		cin >> stu[i].num >> stu[i].name >> stu[i].grade;
+	}
+	int max = stu[0].grade, p = 0, m;
+	cout << setw(10) << "学号" << setw(10) << "姓名" <<setw(10) << "成绩" <<endl;
+	for(int i = 0; i < x; i++){
+		cout << setw(10) << stu[i].num << setw(10) << stu[i].name <<setw(10) << stu[i].grade << endl;
+	}
+	if(x = 1) {
+	cout << "最高分的学号为：" << stu[0].num << "，姓名为：" << stu[0].name << "，成绩为：" << stu[0].grade << endl;}
+	else {
+	for(m = 1; m < x; m++){
+		if(max >= stu[m].grade) ;
+		else {
+		max = stu[m].grade; p = m; }
+	}
+	
+	cout << "最高分的学号为：" << stu[p].num << "，姓名为：" << stu[p].name << "，成绩为：" << stu[p].grade << endl;}
+	cout << p << endl; 
+	return 0;
+}
