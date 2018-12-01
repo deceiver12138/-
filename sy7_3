@@ -1,0 +1,57 @@
+#include <iostream>
+#include <iomanip> 
+#include <fstream>
+using namespace std;
+struct List{
+	int num;
+	char name[20];
+	char sex[10];
+	int born;
+	char addr[50];
+	int qq;
+	char tel[11];
+	char email[20];
+};
+List Input(){
+	List list;
+	cin>>list.num>>list.name>>list.sex>>list.born>>list.addr>>list.qq>>list.tel>>list.email;
+	return list;
+}
+void Output(List stu){
+	cout<<setw(2) << stu.num << setw(5)<<stu.name<<setw(2) << stu.sex<<setw(9)<<stu.born<<setw(15)<<stu.addr<<setw(11)<<stu.qq<<setw(12)<<stu.tel<<setw(15)<<stu.email<<endl;
+}
+int main(){
+	int x;
+	cout << "请输入待输入的人数：" << endl;
+	cin >> x;
+	List stu[x];
+	for(int i = 0; i < x; i++){
+	char filename, ch;
+	fstream infile;
+	cout << "请输入文件名地址：";
+	cin >> filename;
+	infile.open(filename, ios::in);
+	if(!infile){
+		cout << "请输入正确的文件名地址" <<endl;
+		exit(1);
+	}
+	infile.unsetf(ios::skipws);
+	while(infile >> ch)
+		stu[i] << ch;
+	infile.close();
+}
+	Output(stu[i]);
+	return 0;
+//	int x;
+//	cout << "请输入待输入的人数：" << endl;
+//	cin >> x;
+//	List stu[x];
+//	for(int i = 0; i < x; i++){
+//		cout << "请输入第" << i+1 << "个人的学号，姓名。性别，出生日期（年+月+日共8位），家庭地址，QQ号，手机号码及email地址" <<endl; 
+//		stu[i] = Input();
+//	}
+//	cout << setw(2) << "学号" << setw(5)<<"姓名"<<setw(2) << "性别"<<setw(9)<<"出生日期"<<setw(15)<<"家庭住址"<<setw(11)<<"QQ号"<<setw(12)<<"手机号码"<<setw(15)<<"email地址"<<endl; 
+//	for(int i = 0; i < x; i++){
+//		Output(stu[i]);
+//	}
+}
