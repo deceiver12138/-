@@ -1,0 +1,22 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+enum day{
+	Mon,Tue,Wed,Thu,Fri,Sat,Sun
+};
+int main(){
+	day today;
+	int num;
+	today = Mon;
+	num = (int)Mon + 100;
+	switch(num%7){
+		case 0:cout << "Mon";break;
+		case 1:cout << "Tue";break;
+		case 2:cout << "Wed";break;
+		case 3:cout << "Thu";break;
+		case 4:cout << "Fri";break;
+		case 5:cout << "Sat";break;
+		case 6:cout << "Sun";break;
+	}
+	return 0;
+}
