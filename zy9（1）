@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+int swap(int *a, int *b){
+	int k;
+	if(*a > *b){
+		k = *a; *a = *b; *b = k;
+	}
+}
+int swap(int *a, int *b, int *c){
+	swap(a,b);
+	swap(b,c);
+	swap(a,b);
+}
+int main(){
+	int a, b, c;
+	cin >> a >> b >> c;
+	int *p = &a, *q = &b, *r = &c;
+	swap(p,q,r);
+	cout << a << b << c;
+	return 0;
+}
