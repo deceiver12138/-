@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class Teacher{
+	char Num[15];
+	char Name[12];
+	char Sexy[6];
+	char Addr[20];
+	char Tel[15];
+	char Email[25];
+	char Headship[16];
+	char Post[16];
+	int Salary;	
+	public:
+		void setData(char nu[],char na[],char se[],char ad[],char te[],char em[],char he[],char po[],int sa){
+			strcpy(Num,nu);
+			strcpy(Name,na);
+			strcpy(Sexy,se);
+			strcpy(Addr,ad);
+			strcpy(Tel,te);
+			strcpy(Email,em);
+			strcpy(Headship,he);
+			strcpy(Post,po);
+			Salary = sa;
+		}
+		void getNum(char *nu){
+			strcpy(nu,Num);
+		}
+		void getName(char *na){
+			strcpy(na,Name);
+		}
+		void getSexy(char *se){
+			strcpy(se,Sexy);
+		}
+		void getAddr(char *ad){
+			strcpy(ad,Addr);
+		}
+		void getTel(char *te){
+			strcpy(te,Tel);
+		}
+		void getEmail(char *em){
+			strcpy(em,Email);
+		}
+		void getHeadship(char *he){
+			strcpy(he,Headship);
+		}
+		void getPost(char *po){
+			strcpy(po,Post);
+		}
+		int getSalary(){
+			return Salary;
+		}
+		void OutputInfo(){
+			cout<<Num<<Name<<Sexy<<Addr<<Tel<<Email<<Headship<<Post<<Salary;
+		}	
+};
+
+int main()
+{
+	Teacher zhang;
+	zhang.setData("777","张三","男","小谷围","135123456789","135123456789@163.com","经理","牛逼",4000);
+	zhang.OutputInfo();
+ 	return 0;
+}
