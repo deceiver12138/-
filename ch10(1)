@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+int my_strcmp(char *p, char *q){
+	for(int n = 0; n < 20; n++){
+		if(*(p+n) != *(q+n)){
+		return *(p+n)-*(q+n);
+		break;
+		}
+	}
+	return '0';
+}
+int main(){
+	char s1[20];
+	char s2[20];
+	cin >>s1>>s2;
+	if((int)my_strcmp(s1,s2) == 0){
+		cout<<"两个字符串相同";
+	}
+	else cout << "两个字符串第一个不同字符ASCII码差值为："<<(int)my_strcmp(s1,s2);
+	return 0;
+}
