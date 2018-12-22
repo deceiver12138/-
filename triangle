@@ -1,0 +1,44 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+class Point{
+	protected: int x1, y1;
+	public:
+		int Getx() { return x1; }
+		int Gety() { return y1; }
+		void Setxy(int x, int y) { x1 = x; y1 = y;}
+		void print() { cout << "(" << x1 << ", " << y1 << ")"; }
+};
+class Line : public Point{
+	protected: 
+	Point point1;
+	Point point2;
+	public:
+		int Getx2() { return x1; }
+		int Gety2() { return y1; }
+		void Setxy(int x1, int y1, int x2, int y2) { 
+		point1.Setxy(x1, y1); point2.Setxy(x2, y2); }
+		void print() {
+		cout << "(" << point1.Getx() << ", " << point1.Gety() << ") " << "(" << point2.Getx() << ", " << point2.Gety() << ")";
+	}
+		double GetLength(Point point1, Point point2) { 
+		return sqrt((point1.Getx()-point2.Getx()) * (point1.Getx()-point2.Getx()) + point1.Gety() - point2.Gety() * (point1.Gety() - point2.Gety())); }
+};
+class Triangle : public Line{
+	public: Point point3;
+	public:
+		Triangle( int x1, int y1, int x2, int y2, int x3, int y3) { 
+		point1.Setxy(x1, y1); point2.Setxy(x2, y2); point3.Setxy(x3, y3); }
+		void print() {
+		cout << "(" << point1.Getx() << ", " << point1.Gety() << ") " << "(" << point2.Getx() << ", " << point2.Gety() << ") " << "(" << point3.Getx() << ", " << point3.Gety() << ")";
+	}
+		double GetPerimeter(){
+			return GetLength(point1, point2) + GetLength(point2, point3) + GetLength(point1, point3);
+		}
+};
+int main(){
+	Triangle triangle(0,0,1,1,-1,1);
+	triangle.print();
+	cout << '\t';
+	cout << "周长是：" << triangle.GetPerimeter();
+}
