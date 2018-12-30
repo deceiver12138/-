@@ -1,0 +1,383 @@
+#include <iostream>
+#include <iomanip>
+#include <string.h>
+#include <cstdlib> 
+#include <fstream>
+using namespace std;
+struct data
+{
+	int chinese;
+	int math;
+	int english;
+	int science;
+	int art;
+};
+struct student
+{
+	int grade;
+	int classes;
+	int num;
+	char name[20];
+	data score;
+}; 
+
+float average(int arr[], int n)
+{
+	int sum;
+	for(int i = 0; i < n; i++){
+		sum = sum + arr[i];
+	}
+	return (float)sum/n;
+}
+void printfall(student stud[], int n) 
+{
+	cout<<setw(6)<<"年级"<<setw(6)<<"班级"<<setw(10)<<"姓名"<<setw(8)<<"学号"<<setw(6)<<"语文"<<setw(6)<<"数学"<<setw(6)<<"英语"<<setw(6)<<"理综"<<setw(6)<<"文综"<<endl;
+	for(int i = 0; i < n; i++)
+	{
+		if(stud[i].num == 0) continue;
+		cout<<setw(6)<<stud[i].grade<<setw(6)<<stud[i].classes<<setw(10)<<stud[i].name<<setw(8)<<stud[i].num<<setw(6)<<stud[i].score.chinese<<setw(6)<<stud[i].score.math<<setw(6)<<stud[i].score.english<<setw(6)<<stud[i].score.science<<setw(6)<<stud[i].score.art<<endl;
+	}
+	cout << '\n';
+}
+
+void printfclasses(student stud[], int n)
+{
+	int grade, classes;
+	cout << "请输入年级"<<endl;
+	cin>>grade;
+	cout << "请输入班级"<<endl;
+	cin>>classes;
+	cout << '\n';
+	cout<<setw(6)<<"年级"<<setw(6)<<"班级"<<setw(10)<<"姓名"<<setw(8)<<"学号"<<setw(6)<<"语文"<<setw(6)<<"数学"<<setw(6)<<"英语"<<setw(6)<<"理综"<<setw(6)<<"文综"<<endl;
+	for(int i = 0; i < n; i++)
+	{
+		if(stud[i].grade == grade && stud[i].classes == classes)
+			{if(stud[i].num == 0) continue;
+			cout<<setw(6)<<stud[i].grade<<setw(6)<<stud[i].classes<<setw(10)<<stud[i].name<<setw(8)<<stud[i].num<<setw(6)<<stud[i].score.chinese<<setw(6)<<stud[i].score.math<<setw(6)<<stud[i].score.english<<setw(6)<<stud[i].score.science<<setw(6)<<stud[i].score.art<<endl;
+	}}
+	cout << '\n';
+}
+
+void printfchinese(student stud[], int n)
+{
+	cout<<setw(8)<<"学号"<<setw(10)<<"姓名"<<setw(6)<<"成绩"<<endl; 
+	for(int i = 0; i < n; i++){
+		if(stud[i].num == 0) continue;
+			cout<<setw(6)<<stud[i].num<<setw(10)<<stud[i].name<<setw(6)<<stud[i].score.chinese<<endl; 
+	}
+	cout<<'\n';
+}
+
+void printfavechinese(student stud[], int n) 
+{
+	int arr[n], i = 0, j = 0;
+	for(;j < n; j++)
+	{
+		if(stud[i].num == 0) continue;
+		{
+			arr[i] = stud[i].score.chinese;
+			i++;
+		}	
+		
+	}
+	cout<<'\n';
+	cout<<"全体学生的语文平均分数是：";
+	cout<<average(arr, i);
+	cout << '\n';
+} 
+
+void printfmath(student stud[], int n)
+{
+	cout<<setw(8)<<"学号"<<setw(10)<<"姓名"<<setw(6)<<"成绩"<<endl; 
+	for(int i = 0; i < n; i++){
+		if(stud[i].num == 0) continue;
+			cout<<setw(8)<<stud[i].num<<setw(10)<<stud[i].name<<setw(6)<<stud[i].score.math<<endl; 
+	}
+	cout<<'\n';
+}
+
+void printfavemath(student stud[], int n) 
+{
+	int arr[n], i = 0, j = 0;
+	for(;j < n; j++)
+	{
+		if(stud[i].num == 0) continue;
+		{
+			arr[i] = stud[i].score.math;
+			i++;
+		}	
+	}
+	cout<<'\n';
+	cout<<"全体学生的数学平均分数是：";
+	cout<<average(arr, i);
+	cout << '\n';
+} 
+
+void printfenglish(student stud[], int n)
+{
+	cout<<setw(8)<<"学号"<<setw(10)<<"姓名"<<setw(6)<<"成绩"<<endl; 
+	for(int i = 0; i < n; i++){
+		if(stud[i].num == 0) continue;
+		cout<<setw(6)<<stud[i].num<<setw(10)<<stud[i].name<<setw(6)<<stud[i].score.english<<endl; 
+	}
+	cout<<'\n';
+}
+
+void printfaveenglish(student stud[], int n) 
+{
+	int arr[n], i = 0, j = 0;
+	for(;j < n; j++)
+	{
+		if(stud[i].num == 0) continue;
+		{
+			arr[i] = stud[i].score.english;
+			i++;
+		}	
+	}
+	cout<<'\n';
+	cout<<"全体学生的英语平均分数是：";
+	cout<<average(arr, i);
+	cout << '\n';
+} 
+
+void printfscience(student stud[], int n)
+{
+	cout<<setw(8)<<"学号"<<setw(10)<<"姓名"<<setw(6)<<"成绩"<<endl; 
+	for(int i = 0; i < n; i++){
+		if(stud[i].num == 0) continue;
+		cout<<setw(6)<<stud[i].num<<setw(10)<<stud[i].name<<setw(6)<<stud[i].score.science<<endl; 
+	}
+	cout<<'\n';
+}
+
+void printfavescience(student stud[], int n) 
+{
+	int arr[n], i = 0, j = 0;
+	for(;j < n; j++)
+	{
+		if(stud[i].num == 0) continue;
+		{
+			arr[i] = stud[i].score.science;
+			i++;
+		}	
+	}
+	cout<<'\n';
+	cout<<"全体学生的理综平均分数是：";
+	cout<<average(arr, i);
+	cout << '\n';
+} 
+
+void printfart(student stud[], int n)
+{
+	cout<<setw(8)<<"学号"<<setw(10)<<"姓名"<<setw(6)<<"成绩"<<endl; 
+	for(int i = 0; i < n; i++){
+		if(stud[i].num == 0) continue;
+		cout<<setw(6)<<stud[i].num<<setw(10)<<stud[i].name<<setw(6)<<stud[i].score.art<<endl; 
+	}
+	cout<<'\n';
+}
+
+void printfaveart(student stud[], int n) 
+{
+	int arr[n], i = 0, j = 0;
+	for(;j < n; j++)
+	{
+		if(stud[i].num == 0) continue;{
+			arr[i] = stud[i].score.art;
+			i++;
+		}	
+	}
+	cout<<'\n';
+	cout<<"全体学生的文综平均分数是：";
+	cout<<average(arr, i);
+	cout << '\n';
+} 
+
+float aveperson(student stud[], int n)
+{
+	return (float)(stud[n].score.chinese+stud[n].score.math+stud[n].score.english+stud[n].score.science+stud[n].score.art)/5;
+}
+int main()
+{
+	int branch1, branch2, branch3, branch4, branchc,branchm, branche, branchs, brancha, inputnum, n = 1350;
+	char inputname[20];
+	bool TF;
+	student stud[1350] = {{1,1,1111,"a",1,21,31,41,50},{1,1,1122,"b",2,22,32,42,51},{1,2,1211,"c",3,23,33,43,52},{1,2,1222,"d",4,24,34,44,53},{2,5,2508,"e",5,25,35,45,54},{2,8,2850,"f",6,26,36,46,55},{2,9,2907,"g",7,27,37,47,56},{3,1,3110,"h",8,28,38,48,57},{3,6,3601,"i",9,29,39,49,58},{3,8,3840,"j",10,30,40,50,59}};
+	loop1:cout << "输入1：" <<endl;
+	cout << "输入2：显示成绩"<<endl;
+	cout << "输入3：查找成绩"<<endl;
+	cout << "输入0：退出程序"<<endl; 
+	cout << '\n';
+	cin >> branch1;
+	switch(branch1)
+	{
+		case 1:
+			break;
+		case 2:
+			loop:cout << '\n';
+			cout<< "输入1：输出所有学生的所有信息" <<endl;
+			cout <<"输入2：输出某个班的所有信息" <<endl; 
+			cout<< "输入3：输出语文的相关信息" <<endl;
+			cout<< "输入4：输出数学的相关信息" <<endl;
+			cout<< "输入5：输出英语的相关信息" <<endl;
+			cout<< "输入6：输出理综的相关信息" <<endl;
+			cout<< "输入7：输出文综的相关信息" <<endl;
+			cout<< "输入0：返回主菜单"<<endl; 
+			cout << '\n';
+			cin >> branch2;
+			cout << '\n';
+			switch(branch2)
+			{
+				case 1:
+					printfall(stud, n); goto loop; break;
+				case 2:
+					printfclasses(stud, n); goto loop; break;	
+				case 3:
+					cout<<'\n'; 
+					cout<<"输入1：显示所有学生的语文成绩"<<endl;
+					cout<<"输入2：显示所有学生的语文平均分"<<endl; 
+					cout<<"输入0：返回上一层菜单"<<endl;
+					cout << '\n';
+					cin>>branchc;
+					switch(branchc)
+					{
+						case 1:
+							printfchinese(stud, n); goto loop; break;
+						case 2:
+							printfavechinese(stud, n); goto loop; break;
+						case 0:goto loop;break;		
+					}break;	
+				case 4:
+					cout<<'\n'; 
+					cout<<"输入1：显示所有学生的数学成绩"<<endl;
+					cout<<"输入2：显示所有学生的数学平均分"<<endl; 
+					cout<<"输入0：返回上一层菜单"<<endl;
+					cout << '\n';
+					cin>>branchm;
+					switch(branchm)
+					{
+						case 1:
+							printfmath(stud, n); goto loop; break;
+						case 2:
+							printfavemath(stud, n); goto loop; break;
+						case 0:goto loop;break;		
+					}break;	
+				case 5:
+					cout<<'\n'; 
+					cout<<"输入1：显示所有学生的英语成绩"<<endl;
+					cout<<"输入2：显示所有学生的英语平均分"<<endl; 
+					cout<<"输入0：返回上一层菜单"<<endl;
+					cout<<'\n'; 
+					cin>>branche;
+					switch(branche)
+					{
+						case 1:
+							printfenglish(stud, n); goto loop; break;
+						case 2:
+							printfaveenglish(stud, n); goto loop; break;
+						case 0:goto loop;break;		
+					}break;	
+				case 6:
+					cout<<'\n'; 
+					cout<<"输入1：显示所有学生的理综成绩"<<endl;
+					cout<<"输入2：显示所有学生的理综平均分"<<endl; 
+					cout<<"输入0：返回上一层菜单"<<endl;
+					cout << '\n';
+					cin>>branchs;
+					switch(branchs)
+					{
+						case 1:
+							printfscience(stud, n); goto loop; break;
+						case 2:
+							printfavescience(stud, n); goto loop; break;
+						case 0:goto loop;break;		
+					}break;	
+				case 7:
+					cout<<'\n'; 
+					cout<<"输入1：显示所有学生的文综成绩"<<endl;
+					cout<<"输入2：显示所有学生的文综平均分"<<endl; 
+					cout<<"输入0：返回上一层菜单"<<endl;
+					cout << '\n';
+					cin>>brancha;
+					switch(brancha)
+					{
+						case 1:
+							printfart(stud, n); goto loop; break;
+						case 2:
+							printfaveart(stud, n); goto loop; break;
+						case 0:goto loop;break;		
+					}break;	
+				case 0:
+					goto loop1;break;
+				default:
+					cout<<"请输入正确的数字"<<endl;
+					goto loop; break;		
+			} break;
+		case 3:
+		{
+			loop2:cout << '\n';
+			cout<<"输入1：按照学号查找" <<endl;
+			cout<<"输入2：按照姓名查找" <<endl;
+			cout<<"输入0：返回主菜单"<<endl;
+			cout << '\n';
+			cin >> branch3;
+			switch(branch3)
+			{
+				case 1:
+					cout << '\n';
+					cout << "请输入学号："<<endl;
+					cin >> inputnum;
+					cout << '\n';
+					for(int i = 0; i < n; i++)
+					{
+						if(TF = (stud[i].num == inputnum)){
+							cout<<"查找成功！"<<endl;
+							cout<<'\n';
+							cout<<setw(6)<<"年级"<<setw(6)<<"班级"<<setw(10)<<"姓名"<<setw(8)<<"学号"<<setw(6)<<"语文"<<setw(6)<<"数学"<<setw(6)<<"英语"<<setw(6)<<"理综"<<setw(6)<<"文综"<<setw(6)<<"平均"<<endl;
+							cout<<setw(6)<<stud[i].grade<<setw(6)<<stud[i].classes<<setw(10)<<stud[i].name<<setw(8)<<stud[i].num<<setw(6)<<stud[i].score.chinese<<setw(6)<<stud[i].score.math<<setw(6)<<stud[i].score.english<<setw(6)<<stud[i].score.science<<setw(6)<<stud[i].score.art<<setw(6)<<aveperson(stud, i)<<endl;
+							break;
+						}
+							
+					}
+					if(TF == false) cout << "查找失败！"<<endl;
+					cout << '\n';
+					goto loop2;
+					cout<<'\n';
+					break;
+				case 2:
+					cout << '\n';
+					cout << "请输入姓名："<<endl;
+					cin >> inputname;
+					cout << '\n';
+					for(int i = 0; i < n; i++)
+					{
+						if(TF = (!strcmp(stud[i].name, inputname))){
+							cout<<"查找成功！"<<endl;
+							cout<<'\n';
+							cout<<setw(6)<<"年级"<<setw(6)<<"班级"<<setw(10)<<"姓名"<<setw(8)<<"学号"<<setw(6)<<"语文"<<setw(6)<<"数学"<<setw(6)<<"英语"<<setw(6)<<"理综"<<setw(6)<<"文综"<<setw(6)<<"平均"<<endl;
+							cout<<setw(6)<<stud[i].grade<<setw(6)<<stud[i].classes<<setw(10)<<stud[i].name<<setw(8)<<stud[i].num<<setw(6)<<stud[i].score.chinese<<setw(6)<<stud[i].score.math<<setw(6)<<stud[i].score.english<<setw(6)<<stud[i].score.science<<setw(6)<<stud[i].score.art<<setw(6)<<aveperson(stud, i)<<endl;
+							break;
+						}
+							
+					}
+					if(TF == false) cout << "查找失败！"<<endl;
+					cout << '\n';
+					goto loop2;
+					cout << '\n';
+					break;
+				case 0:
+					goto loop1;
+					break;	
+				default:
+					cout<<"请输入正确的数字"<<endl;
+					goto loop2; break;
+			}
+		}break;
+		case 0:
+			return 0;
+		default:
+			cout<<"请输入正确的数字"<<endl;
+			break;
+	}
+	return 0;
+}
